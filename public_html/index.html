@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>Arduino Captors</title>
+  <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var socket = io.connect('http://localhost');
+    socket.on('photocell', function (value) {
+      document.getElementById('photocell_value').value = value;
+    });
+  </script>
+</head>
+<body>
+
+<h1>Arduino Captors</h1>
+<h2>Photocell</h2>
+<p>The current value of the photocell is : <form><input type="text" disabled="true" id="photocell_value" value="undefined"></form></p>
+
+</body>
+</html>
