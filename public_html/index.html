@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Our Sensors</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <title>Arduino Sensors</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen" />
     <style>
       #timestamp { font-style : italic; }
       .value { font-weight : bold; }
@@ -11,19 +10,20 @@
   </head>
 
   <body>
-    <h1>Sensors</h1>
+    <h1>Arduino Sensors</h1>
     <p>Read values of sensors and control motors from a web application</p><p>Last update : <span id="timestamp" class="value">never</span>
     <h2>Photocell</h2>
-    <p>Current value : <span id="photocell" class="value">n/a</span></p>
+    <p>Current value : <input type="text" id="photocell" class="value" value="n/a" /></p>
 
     <script src="http://code.jquery.com/jquery-latest.js"></script>
     <script src="js/bootstrap.min.js"></script>
 
-    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
-    <script type="text/javascript">
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
       var socket = io.connect('http://localhost');
-      socket.on('photocell', function (value) {
-        document.getElementById('photocell_value').value = value;
+      socket.on('sensors', function (data) {
+        var sensors = $.parseJSON(data);
+        document.getElementById('photocell').value = sensors.photocell;
       });
     </script>
   </body>
