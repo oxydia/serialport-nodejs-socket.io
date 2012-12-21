@@ -19,15 +19,12 @@ var usb = new serialport.SerialPort(arduinoSerialPort, {
 io.sockets.on('connection', function (socket) {
   // Transfer usb to socket
   usb.on('data', function (data) {
-    var captors = JSON.parse(data);
+    var sensors = JSON.parse(data);
     // Debug
     // console.log('photocell captor value : ' + captors.photocell);
 
-    // We could emit directly the json for captors like this
-    // socket.emit('captors', captors);
-    // but we would need to parse the json later (jquery?)
-    // for now, an integer is enough
-    socket.emit('photocell', captors.photocell);
+    // Push a notification through the socket
+    socket.emit('sensors', captors);
   });
 });
 

@@ -9,7 +9,7 @@ cd /home/user/arduino/public_html
 
 // Arduino may be runnning on a different usb port, edit arduinoSerialPort :
 
-nano index.js
+nano server.js
 
 // Install dependencies
 
@@ -17,7 +17,7 @@ npm install serialport socket.io
 
 // Launch server & capture console
 
-nohup node index.js >> ../console.log 2>&1 &
+nohup node server.js >> ../console.log 2>&1 &
 
 // Watch values evolved
 
