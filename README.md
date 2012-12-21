@@ -18,3 +18,7 @@ npm install serialport socket.io
 // Launch server & capture console
 
 nohup node index.js >> ../console.log 2>&1 &
+
+// Watch values evolved
+
+-> http://localhost:8080
